@@ -1,19 +1,23 @@
 package in.belenits.service;
 
-import in.belenits.dto.EmployeeUpdateDto;
-import in.belenits.model.Employee;
+import in.belenits.dto.EmployeeCreateRequest;
+import in.belenits.dto.EmployeeResponse;
+import in.belenits.dto.EmployeeUpdateRequest;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
 public interface EmployeeService {
 
-    void saveEmployee(Employee employee);
+    EmployeeResponse saveEmployee(EmployeeCreateRequest employeeCreateRequest);
 
-    Employee updateEmployee(Long id, EmployeeUpdateDto employeeUpdateDto);
+    EmployeeResponse updateEmployee(Long id, EmployeeUpdateRequest employeeUpdateRequest);
 
     void deleteEmployee(Long id);
 
-    List<Employee> getAllEmployee();
+    List<EmployeeResponse> getAllEmployee();
 
-    Employee getEmployee(Long id);
+    EmployeeResponse getEmployee(Long id);
+
+    void uploadDocuments(Long id, MultipartFile photo, MultipartFile resume);
 }
